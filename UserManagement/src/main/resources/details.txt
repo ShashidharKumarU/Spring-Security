@@ -1,0 +1,94 @@
+--java.lang.IllegalArgumentException: There is no PasswordEncoder mapped for the id "null"
+Solution:
+PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+
+--CustomeUserDetails
+package com.example.demo.model;
+
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+public class CustomUserDetails implements UserDetails {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 555736648597526872L;
+	private  org.springframework.security.core.userdetails.User user;
+
+    public CustomUserDetails(final org.springframework.security.core.userdetails.User _user) {
+            this.user = _user;
+    }
+
+    public CustomUserDetails() {
+    }
+
+    @Override
+    public Collection<GrantedAuthority> getAuthorities() {
+             final Set<GrantedAuthority> _grntdAuths = new HashSet<GrantedAuthority>();
+
+     List<org.springframework.security.core.userdetails.User> _roles = null;
+
+    /* if (user!=null) {
+             _roles = ((Object) user).getRoles();
+     }
+
+     if (_roles!=null) {
+             for (UserRole _role : _roles) {
+                     _grntdAuths.add(new GrantedAuthorityImpl(((Object) _role).getRole()));
+             }
+     }*/
+
+     return _grntdAuths;
+    }
+
+    @Override
+    public String getPassword() {
+            return this.getPassword();
+    }
+ /*@Override
+    public String getUsername() {
+            if (this.user == null) {
+                    return null;
+            }
+            return this.getUser_name();
+    }*/
+
+    @Override
+    public boolean isAccountNonExpired() {
+            return this.isAccountNonExpired();
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+            return this.isAccountNonLocked();
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+            return this.isCredentialsNonExpired();
+    }
+
+    @Override
+    public boolean isEnabled() {
+            return this.isEnabled();
+    }
+
+    public org.springframework.security.core.userdetails.User getUser() {
+            return user;
+    }
+
+    @Override
+    public String toString() {
+            return "CustomUserDetails [user=" + user + "]";
+    }
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}
