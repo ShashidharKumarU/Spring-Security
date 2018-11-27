@@ -13,7 +13,7 @@ import com.example.demo.service.UserServiceImpl;
 @Controller
 public class UserController {
 
-		@GetMapping(name="/login")
+		@RequestMapping(value="/login",method=RequestMethod.GET)
 		public String login(@RequestParam(name="username") String username, @RequestParam(name="password") String password) {
 			System.out.println("username : "+username);
 			System.out.println("password : "+password);
@@ -25,9 +25,9 @@ public class UserController {
 			return "/allusers";
 		}
 		
-/*		@PostMapping(name="/allusers")
-		public String allusers() {
+		@RequestMapping(value="/index")
+		public String index() {
 			
-			return "allusers";
-		}*/
+			return "index";
+		}
 }
