@@ -1,0 +1,17 @@
+use mydb
+
+db.createCollection("EmployeeDB")
+
+db.Employee.insert({     "employeeId": 12,     "firstName": "Shashi",     "lastName": "U13" })
+ 
+db.Employee.insert({   "_id": 15,    "firstName": "Shashi",     "lastName": "U15" })
+ 
+db.Employee.find().forEach(printjson)
+ 
+ 
+{
+    "employeeId": 10,
+    "firstName": "Shashi",
+    "lastName": "U"
+}
+ 
