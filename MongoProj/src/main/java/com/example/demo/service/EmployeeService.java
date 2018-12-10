@@ -6,37 +6,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Employee;
-import com.example.demo.repository.EmployeeRepositoryImpl;
+import com.example.demo.repository.EmployeeRepository;
 
-@Service
+@Service("employeeService")
 public class EmployeeService {
 
 	@Autowired
-	public EmployeeRepositoryImpl employeeRepositoryImpl;
+	public EmployeeRepository employeeRepository;
 	public Employee addEmployee(Employee e) {
 		// TODO Auto-generated method stub
-		return employeeRepositoryImpl.save(e);
+		return employeeRepository.save(e);
 	}
 
 	public Employee updateEmployee(Employee e) {
 		// TODO Auto-generated method stub
-		return employeeRepositoryImpl.save(e);
+		return employeeRepository.save(e);
 	}
 
-	public boolean deleteEmployee(String id) {
+	public void deleteEmployee(String id) {
 		// TODO Auto-generated method stub
-		return employeeRepositoryImpl.remove(employeeRepositoryImpl.findById(id));
+			employeeRepository.deleteByEmployeeId(id);
 	}
 
 	public List<Employee> findAll() {
 		// TODO Auto-generated method stub
-		return employeeRepositoryImpl.findAll();
+		return employeeRepository.findAll();
 	}
 
 	public Employee findEmployee(String id) {
 		// TODO Auto-generated method stub
-		System.out.println("im in findBy service "+employeeRepositoryImpl.findById(id));
-		return employeeRepositoryImpl.findById(id);
+		System.out.println("im in findBy service "+employeeRepository.findById(id));
+		return employeeRepository.findByEmployeeId(id);
 	}
 	
 }

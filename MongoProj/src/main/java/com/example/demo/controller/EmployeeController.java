@@ -38,10 +38,11 @@ public class EmployeeController {
 	}
 	
 	@DeleteMapping(value="/delete/{id}")
-	public boolean delete(@RequestParam String id) {
+	public String delete(@PathVariable String id) {
 
 		System.out.println("hi im deleting");
-		return employeeService.deleteEmployee(id);
+		employeeService.deleteEmployee(id);
+		return "Success";
 	}
 	
 	@GetMapping(value="/search/{id}")
